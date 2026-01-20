@@ -199,14 +199,16 @@
         }
 
         .project-card {
+            width: 100%;
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
             padding: 24px;
-            transition: border-color 0.3s;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
+            gap: 10px;
+            overflow: hidden;
+            transition: border-color 0.3s;
         }
 
         .project-card:hover {
@@ -214,30 +216,16 @@
         }
 
         .project-icon {
-            width: auto;
-            height: auto;
-            background: linear-gradient(135deg, #667eea 0%, #10b981 100%);
-            border-radius: 8px;
-            margin-bottom: 4px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .project-icon img {
-            width: auto;
-            height: auto;
-            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 8px;
+            display: block;
         }
 
         .project-card h3 {
             font-size: 16px;
             color: #ffffff;
-            margin-bottom: 12px;
             font-weight: 600;
         }
 
@@ -464,44 +452,34 @@
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-icon">
-                    <img src="assets\images\Chatbot.png" alt="Ahmed Ibrahim" class="project-icon">
-                </div>
+                <img src="assets\images\Chatbot.png" alt="Ahmed Ibrahim" class="project-img">
                 <h3>University Chatbot</h3>
                 <p>Developed an AI model to talk to university students to provide quick and accurate information about various aspects of their education, such as course schedules, midterm grades, and final grades.
                     This is to reduce the time required to resolve inquiries.</p>
                 <a href="https://github.com/AhmedIbrahim000/University-Chatbot" class="project-link" target="_blank">View Project →</a>
             </div>
             <div class="project-card">
-                <div class="project-icon">
-                    <img src="assets\images\Titanic.png" alt="Ahmed Ibrahim" class="project-icon">
-                </div>
+                <img src="assets\images\Titanic.png" alt="Ahmed Ibrahim" class="project-img">
                 <h3>Titanic Data Analysis</h3>
                 <p>- Analysis of age, gender, passenger class, family size, and their impact on survival
                    <br>- Colored and interpreted graphs.</p>
                 <a href="https://github.com/AhmedIbrahim000/Titanic-dataset-Analysis" class="project-link" target="_blank">View Project →</a>
             </div>
             <div class="project-card">
-                <div class="project-icon">
-                    <img src="assets\images\California Housing Prices.png" alt="Ahmed Ibrahim" class="project-icon">
-                </div>
+                <img src="assets\images\California Housing Prices.png" alt="Ahmed Ibrahim" class="project-img">
                 <h3>California Housing Prices</h3>
                 <p>- Analysis of population distribution, housing prices, and average number of rooms
                     <br>- Extracting relationships between variables.</p>
                 <a href="https://github.com/AhmedIbrahim000/Data-Cleaning-with-SQL__World-layoffs" class="project-link" target="_blank">View Project →</a>
             </div>
             <div class="project-card">
-                <div class="project-icon">
-                    <img src="assets\images\World Layoffs.png" alt="Ahmed Ibrahim" class="project-icon">
-                </div>
+                <img src="assets\images\World Layoffs.png" alt="Ahmed Ibrahim" class="project-img">
                 <h3>Data Cleaning with SQL – World Layoffs</h3>
                 <p>Comprehensive SQL data cleaning project analyzing global layoff trends. Implemented advanced data cleaning techniques including handling duplicates, standardizing formats, and managing null values to prepare datasets for analysis.</p>
                 <a href="https://github.com/AhmedIbrahim000/Data-Cleaning-with-SQL__World-layoffs" class="project-link" target="_blank">View Project →</a>
             </div>
             <div class="project-card">
-                <div class="project-icon">
-                    <img src="assets\images\Supermarket Sales Dashboard.png" alt="Ahmed Ibrahim" class="project-icon">
-                </div>
+                <img src="assets\images\Supermarket Sales Dashboard.png" alt="Ahmed Ibrahim" class="project-img">
                 <h3>Supermarket Sales Dashboard</h3>
                 <p>Analysis of supermarket sales data for three branches over a year.<br><br><br><br></p>
                 <a href="https://github.com/AhmedIbrahim000/supermarket-sales-Dashboard" class="project-link" target="_blank">View Project →</a>
@@ -573,4 +551,5 @@
 </body>
 
 </html>
+
 
