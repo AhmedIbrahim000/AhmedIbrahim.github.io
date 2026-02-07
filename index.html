@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #0a0a0a;
+            background: #121212;
             color: #e5e5e5;
             line-height: 1.6;
         }
@@ -257,10 +257,24 @@
 
         /* EDUCATION */
         .education-card {
+            gap: 10px;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+        }
+
+        .education-info {
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
             padding: 24px;
+        }
+
+        .education-img{
+            width: 50%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
         .education-card h3 {
@@ -318,10 +332,23 @@
         }
 
         .cert-card {
+            width: 100%;
             background: #1a1a1a;
             border: 1px solid #2a2a2a;
             border-radius: 8px;
             padding: 24px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .cert-img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
         }
 
         .cert-icon {
@@ -338,7 +365,7 @@
         .cert-card h3 {
             font-size: 15px;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-top: 10px;
             font-weight: 600;
         }
 
@@ -442,6 +469,21 @@
         </div>
     </section>
 
+    <!-- EDUCATION -->
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education-card">
+            <div class="education-info">
+                <h3>Bachelor of Computers & Information Technology</h3>
+                <p class="university">Future University in Egypt (with University of Cincinnati)</p>
+                <p class="details">Information Systems • 2018 – 2023 • GPA: 3.00</p>
+            </div>
+            <div class="education-img">
+                <img src="assets\images\FUE.jpg" alt="Ahmed Ibrahim" class="project-img">
+            </div>
+        </div>
+    </section>
+    
     <!-- SKILLS -->
     <section id="skills">
         <h2>Skills</h2>
@@ -471,19 +513,25 @@
         </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education-card">
-            <h3>Bachelor of Computers & Information Technology</h3>
-            <p class="university">Future University in Egypt (with University of Cincinnati)</p>
-            <p class="details">Information Systems • 2018 – 2023 • GPA: 3.00</p>
-        </div>
-    </section>
-
     <!-- EXPERIENCE -->
     <section id="experience">
         <h2>Experience</h2>
+        
+        <div class="experience-card">
+            <div class="experience-header">
+                <h3>AI & Data Science - Microsoft Machine Learning Engineer Trainee</h3>
+                <span class="date">Nov 2025 – May 2026</span>
+            </div>
+            <p class="company">Digital Egypt Pioneers Initiative</p>
+            <ul>
+                <li>Statistics and Mathematics</li>
+                <li>Python, Preprocessing, and Visualization</li>
+                <li>Machine Learning and Deep Learning</li>
+                <li>NLP and Computer Vision</li>
+                <li>Azure AI Fundamentals and Azure AI Engineer Associate</li>
+                <li>MLOps Tools, MLflow, and Hugging Face</li>
+            </ul>
+        </div>
         
         <div class="experience-card">
             <div class="experience-header">
@@ -556,29 +604,25 @@
     <section id="certifications">
         <h2>Certifications</h2>
         <div class="cert-grid">
-            <div class="cert-card">
+            <!-- <div class="cert-card">
                 <div class="cert-icon">
-                    <!--
+                    
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                     !Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.
                     <path fill="#fffdf5" d="M341.9 38.1C328.5 29.9 311.6 29.9 298.2 38.1C273.8 53 258.7 57 230.1 56.4C214.4 56 199.8 64.5 192.2 78.3C178.5 103.4 167.4 114.5 142.3 128.2C128.5 135.7 120.1 150.4 120.4 166.1C121.1 194.7 117 209.8 102.1 234.2C93.9 247.6 93.9 264.5 102.1 277.9C117 302.3 121 317.4 120.4 346C120 361.7 128.5 376.3 142.3 383.9C164.4 396 175.6 406 187.4 425.4L138.7 522.5C132.8 534.4 137.6 548.8 149.4 554.7L235.4 597.7C246.9 603.4 260.9 599.1 267.1 587.9L319.9 492.8L372.7 587.9C378.9 599.1 392.9 603.5 404.4 597.7L490.4 554.7C502.3 548.8 507.1 534.4 501.1 522.5L452.5 425.3C464.2 405.9 475.5 395.9 497.6 383.8C511.4 376.3 519.8 361.6 519.5 345.9C518.8 317.3 522.9 302.2 537.8 277.8C546 264.4 546 247.5 537.8 234.1C522.9 209.7 518.9 194.6 519.5 166C519.9 150.3 511.4 135.7 497.6 128.1C472.5 114.4 461.4 103.3 447.7 78.2C440.2 64.4 425.5 56 409.8 56.3C381.2 57 366.1 52.9 341.7 38zM320 160C373 160 416 203 416 256C416 309 373 352 320 352C267 352 224 309 224 256C224 203 267 160 320 160z"/>
-                    </svg>-->
+                    </svg>
                     <img src="assets\images\DEPI_icon.png" alt="Icon" style="width: 38px; height: 38px; border-radius: 6px;" />
                 </div>
                 <h3>Digital Egypt Pioneers Initiative</h3>
                 <p>Microsoft • AI & Data Science Track</p>
-            </div>
+            </div>-->
             <div class="cert-card">
-                <div class="cert-icon">
-                    <img src="assets\images\DE.png" alt="Icon" style="width: 38px; height: 38px; border-radius: 6px;" />   
-                </div>
+                <img src="assets\images\Data Engineering.png" alt="Icon"/>
                 <h3>Manara</h3>
                 <p>Data Engineering Specialization</p>
             </div>
             <div class="cert-card">
-                <div class="cert-icon">
-                    <img src="assets\images\Next Academy icon.png" alt="Icon" style="width: 38px; height: 38px; border-radius: 6px;" />   
-                </div>
+                <img src="assets\images\Next Academy.jpg" alt="Icon"/>
                 <h3>Next Academy</h3>
                 <p>Oracle 12c Developer “SQL, PL, Forms, Reports</p>
             </div>
