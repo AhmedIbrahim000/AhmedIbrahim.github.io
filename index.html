@@ -382,6 +382,108 @@
             transform: translateX(5px);           /* ← NEW: Slide right 5px */
         }
 
+        /* FLIP CARDS FOR SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 300px;
+            perspective: 1000px;              /* ← Creates 3D space for flip effect */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;       /* ← Smooth flip animation */
+            transform-style: preserve-3d;     /* ← Enables 3D transformation */
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);       /* ← Flips the card on hover */
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;      /* ← Hides back of card when facing away */
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .flip-card-front {
+            background: #1a1a1a;              /* ← Dark background for front */
+            border: 1px solid #2a2a2a;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);  /* ← Green gradient for back */
+            transform: rotateY(180deg);       /* ← Positions back face correctly */
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;                  /* ← Size for emoji icons */
+        }
+
+        .flip-card-front h3 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .flip-card-front p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .flip-card-back h3 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .flip-card-back ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .flip-card-back li {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .flip-card-back li:before {
+            content: "✓";                     /* ← Checkmark bullet points */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
         /* PROJECT CARDS */
         .projects-grid {
             display: grid;
@@ -566,6 +668,75 @@
             box-shadow: 0 5px 20px rgba(16, 185, 129, 0.15);  /* ← NEW: Glow */
         }
 
+        /* FEEDBACK SECTION */
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feedback-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /*.feedback-card:hover {
+            border-color: #10b981;
+            transform: translateY(-5px);      /* ← Lift card on hover *
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.15);  /* ← Green glow *
+        }*/
+
+        .feedback-quote {
+            font-size: 40px;                  /* ← Large quotation mark */
+            color: #10b981;
+            line-height: 1;
+            margin-bottom: 15px;
+            opacity: 0.3;                     /* ← Semi-transparent */
+        }
+
+        .feedback-text {
+            color: #b0b0b0;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;               /* ← Italic for testimonial text */
+        }
+
+        .feedback-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;               /* ← Circular avatar */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .feedback-details h4 {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .feedback-details p {
+            font-size: 12px;
+            color: #10b981;                   /* ← Green for job title */
+        }
+
         /* CONTACT SECTION */
         .contact-grid {
             display: grid;
@@ -643,10 +814,12 @@
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
-        <li><a href="#activities" class="nav-link">Activities</a></li>
+        <!--<li><a href="#activities" class="nav-link">Activities</a></li>-->
+        <li><a href="#feedback" class="nav-link">Feedback</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
 </nav>
@@ -776,6 +949,134 @@
         </div>
     </section>
 
+    <!-- OFFERED SERVICES -->
+    <section id="services">
+        <h2>Offered Services</h2>
+        <div class="services-grid">
+            <!-- Service Card 1: Data Analysis -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- FRONT SIDE -->
+                    <div class="flip-card-front">
+                        <div class="service-icon">📊</div>
+                        <h3>Data Analysis</h3>
+                        <p>Transform raw data into insights</p>
+                    </div>
+                    <!-- BACK SIDE (appears when flipped) -->
+                    <div class="flip-card-back">
+                        <h3>Data Analysis</h3>
+                        <ul>
+                            <li>Statistical analysis and reporting</li>
+                            <li>Data cleaning and preprocessing</li>
+                            <li>Exploratory data analysis (EDA)</li>
+                            <li>Pattern recognition and insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 2: Data Visualization 
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">📈</div>
+                        <h3>Data Visualization</h3>
+                        <p>Create compelling dashboards</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Data Visualization</h3>
+                        <ul>
+                            <li>Interactive Power BI dashboards</li>
+                            <li>Custom Tableau visualizations</li>
+                            <li>Executive reports and KPIs</li>
+                            <li>Real-time data monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+
+            <!-- Service Card 3: Database Solutions -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🗄️</div>
+                        <h3>Database Solutions</h3>
+                        <p>Design and optimize databases</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Database Solutions</h3>
+                        <ul>
+                            <li>SQL database design and optimization</li>
+                            <li>Query performance tuning</li>
+                            <li>Data warehousing solutions</li>
+                            <li>ETL pipeline development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 4: Machine Learning -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🤖</div>
+                        <h3>Machine Learning</h3>
+                        <p>Build predictive models</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Machine Learning</h3>
+                        <ul>
+                            <li>Predictive modeling and forecasting</li>
+                            <li>Classification and regression</li>
+                            <li>Model training and evaluation</li>
+                            <li>AI solution implementation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 5: Python Development -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon"><img src="assets\images\Python.png" alt="Ahmed Ibrahim" style="width: 45px; height: 45px;"></div>
+                        <h3>Python Development</h3>
+                        <p>Custom automation scripts</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Python Development</h3>
+                        <ul>
+                            <li>Data processing automation</li>
+                            <li>Web scraping solutions</li>
+                            <li>API development with Flask/Django</li>
+                            <li>Script optimization and testing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 6: Business Intelligence 
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">💼</div>
+                        <h3>Business Intelligence</h3>
+                        <p>Strategic data consulting</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Business Intelligence</h3>
+                        <ul>
+                            <li>Business analytics and insights</li>
+                            <li>Performance metrics tracking</li>
+                            <li>Data-driven decision support</li>
+                            <li>Strategic recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects">
         <h2>Projects</h2>
@@ -860,13 +1161,58 @@
         </div>
     </section>
 
-    <!-- ACTIVITIES & LEADERSHIP -->
+    <!-- FEEDBACK -->
+    <section id="feedback">
+        <h2>Client Feedback</h2>
+        <div class="feedback-grid">
+            <!-- Feedback Card 1 -->
+            <div class="feedback-card">
+                <div class="feedback-quote">"</div>  <!-- ← Large quotation mark -->
+                <p class="feedback-text">Ahmed delivered exceptional data analysis work that helped us identify key business opportunities. His insights were clear, actionable, and significantly impacted our decision-making process.</p>
+                <div class="feedback-author">
+                    <div class="feedback-avatar">MK</div>  <!-- ← Initials in circle -->
+                    <div class="feedback-details">
+                        <h4>Mohamed Khaled</h4>
+                        <p>Business Analyst</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Card 2 -->
+            <div class="feedback-card">
+                <div class="feedback-quote">"</div>
+                <p class="feedback-text">The Power BI dashboard Ahmed created transformed how we visualize our sales data. It's intuitive, beautiful, and has become an essential tool for our team.</p>
+                <div class="feedback-author">
+                    <div class="feedback-avatar">SH</div>
+                    <div class="feedback-details">
+                        <h4>Sara Hassan</h4>
+                        <p>Sales Manager</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Card 3 
+            <div class="feedback-card">
+                <div class="feedback-quote">"</div>
+                <p class="feedback-text">Working with Ahmed on our database optimization project was a great experience. He quickly identified bottlenecks and implemented solutions that improved our query performance by 60%.</p>
+                <div class="feedback-author">
+                    <div class="feedback-avatar">AY</div>
+                    <div class="feedback-details">
+                        <h4>Ali Youssef</h4>
+                        <p>IT Manager</p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </section>
+
+    <!-- ACTIVITIES & LEADERSHIP 
     <section id="activities">
         <h2>Activities & Leadership</h2>
         <div class="section-content">
             <p>Actively engaged in continuous learning and professional development within the data science community. Regularly contribute to open-source projects on GitHub, focusing on data analysis tools and SQL optimization techniques. Committed to staying current with emerging technologies and best practices in data analytics and machine learning.</p>
         </div>
-    </section>
+    </section>-->
 
     <!-- CONTACT -->
     <section id="contact">
@@ -1006,3 +1352,4 @@
 </script>
 </body>
 </html>
+
