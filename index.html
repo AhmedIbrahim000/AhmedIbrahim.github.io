@@ -11,17 +11,193 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background: #121212;
             color: #e5e5e5;
             line-height: 1.6;
+            padding-top: 70px;
+            margin-left: 200px;
+        }
+
+        /* SIDE NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid #2a2a2a;
+            padding: 40px 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #10b981;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 0 30px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        nav .logo:hover {
+            color: #34d399;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            gap: 5px;
+            padding: 0 20px;
+        }
+
+        nav ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 6px;
+        }
+
+        nav ul li a:hover {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        nav ul li a.active {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.15);
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 0;
+            background: #10b981;
+            transition: height 0.3s;
+            border-radius: 0 3px 3px 0;
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a.active::before {
+            height: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #10b981;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
+            nav {
+                left: -200px;
+                transition: left 0.3s;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
+        }
+
+        /* FADE IN ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .header {
+            animation: fadeIn 1s ease;
+        }
+
+        section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-child(even) {
+            animation-delay: 0.1s;
         }
 
         /* HEADER */
@@ -136,6 +312,8 @@
             font-size: 12px;
             margin: 4px 4px 4px 0;
             font-weight: 500;
+            transition: all 0.3s ease;            /* ← NEW: Added transition */
+            cursor: pointer; 
         }
 
         .skill-tag:hover {
@@ -152,6 +330,7 @@
             border-radius: 8px;
             padding: 24px;
             margin-bottom: 16px;
+            transition: all 0.3s ease;
         }
 
         .experience-header {
@@ -198,6 +377,11 @@
             left: 0;
         }
 
+        .experience-card:hover {
+            border-color: #10b981;
+            transform: translateX(5px);           /* ← NEW: Slide right 5px */
+        }
+
         /* PROJECT CARDS */
         .projects-grid {
             display: grid;
@@ -220,6 +404,8 @@
 
         .project-card:hover {
             border-color: #10b981;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
         }
 
         .project-img {
@@ -271,7 +457,7 @@
         }
 
         .education-img{
-            width: 50%;
+            width: 60%;
             aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 8px;
@@ -340,7 +526,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .cert-img {
@@ -374,6 +560,12 @@
             font-size: 13px;
         }
 
+        .cert-card:hover {
+            border-color: #10b981;
+            transform: translateY(-5px);          /* ← NEW: Lift up */
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.15);  /* ← NEW: Glow */
+        }
+
         /* CONTACT SECTION */
         .contact-grid {
             display: grid;
@@ -389,14 +581,15 @@
             display: flex;
             align-items: center;
             gap: 11px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
         }
 
         .contact-item:hover {
             border-color: #10b981;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
         }
 
         .contact-icon {
@@ -442,6 +635,29 @@
 </head>
 <body>
 
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <a href="#" class="logo">AI</a>
+    <ul id="nav-menu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#activities" class="nav-link">Activities</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Mobile Menu Toggle -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 <div class="container">
     <!-- HEADER -->
     <header class="header">
@@ -449,7 +665,7 @@
             <img src="assets\images\Profile.png" alt="Ahmed Ibrahim" class="profile-pic">
         </div>
         <div class="header-content">
-            <h1>Hi, I'm Ahmed Ibrahim Mahmoud Ibrahim 👋</h1>
+            <h1>Hi, I'm Ahmed Ibrahim Mahmoud 👋</h1>
             <p class="subtitle">Data Analyst & Data Scientist</p>
             <p class="tagline">Computer and Information Technology graduate with a strong foundation in Data Science, SQL, and Python. Passionate about turning raw data into actionable insights and solving real-world problems through analytics and visualization.</p>
             <a href="assets\PDF\Ahmad Ibrahim Mahmoud Ibrahim CV.pdf" download class="download-btn">
@@ -736,7 +952,57 @@
     © 2026 Ahmed Ibrahim Mahmoud — Built with passion for data
 </footer>
 
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+        const nav = document.getElementById('navbar');
+        nav.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navbar').classList.remove('active');
+        });
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Highlight active section in nav
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Smooth scroll animation observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+</script>
 </body>
-
 </html>
-
